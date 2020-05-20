@@ -9,9 +9,11 @@ def bsimport(stock):
     df = df['financials']
     df = pd.DataFrame.from_dict(df) #Tranform from dictionary to Dataframe
     df = df.set_index('date',drop=True)
-    # df = df.div(1000000)
-    # df = df.T
-    # print(df)
+    df = df.astype(float)
+    df = df.div(1000000)
+    df = df.astype(int)
+    df = df.T
+    print(df)
     return df
 
 bsimport('AAPL')

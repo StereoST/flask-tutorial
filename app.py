@@ -12,10 +12,8 @@ bs = pd.DataFrame()
 def bs_table():
     if request.method == 'POST' and 'stock_input' in request.form:
         stock = request.form.get('stock_input')
-        print(stock)
         global bs
         bs = BalanceSheet.bsimport(stock)
-        print(bs)
     return render_template('index.html',tables = [bs.to_html(classes='data', header="true")])
 
 app.run()
